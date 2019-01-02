@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "c81020b1-c142-4d66-9f42-9530d018dab7",
+		"name": "Stripe_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Post_1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eccd0781-deac-44b6-b36e-18f1d6ecfbed",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}v1/customers?email=dbharti715@gmail.com&account_balance=80000",
+							"host": [
+								"{{BaseURL}}v1"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "dbharti715@gmail.com"
+								},
+								{
+									"key": "account_balance",
+									"value": "80000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "726efeed-be86-4e5f-bb5f-943bd4e48576",
+								"exec": [
+									"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
+									"    console.log(response.json());",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"dbharti715@gmail.com\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}v1/customers/cus_EGE2vt4EIPcQqQ",
+							"host": [
+								"{{BaseURL}}v1"
+							],
+							"path": [
+								"customers",
+								"cus_EGE2vt4EIPcQqQ"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post_2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d829d3d5-8791-4afe-8be4-7763594a6335",
+								"exec": [
+									"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
+									"    console.log(response.json());",
+									"});",
+									"let status_1=pm.environment.set(\"status\",\"200\");",
+									"if(status_1==\"status\")",
+									"{",
+									"console.log(\"created\");",
+									"}",
+									"else",
+									"{",
+									"  console.log(\"not created\") ;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}v1/customers?email=anything4016@gmail.com&description=new account",
+							"host": [
+								"{{BaseURL}}v1"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "anything4016@gmail.com"
+								},
+								{
+									"key": "description",
+									"value": "new account"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post_3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7868552b-21f3-44db-a6a9-a84e78e7b793",
+								"exec": [
+									"pm.test(\"Get response time\",function(){  pm.expect(pm.response.responsetime).to.be.below(200);});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}v1/customers?email=divya.789@gmail.com",
+							"host": [
+								"{{BaseURL}}v1"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "divya.789@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payouts",
+			"item": [
+				{
+					"name": "options",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}v1/refunds",
+							"host": [
+								"{{BaseURL}}v1"
+							],
+							"path": [
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post_1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "sk_test_z1HfwbObc0f8rYIpt0ufOHHs",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"id": "12af02ff-bb0e-42f5-8dd0-806d4a0589ce",
+			"key": "BaseURL",
+			"value": "https://api.stripe.com/",
+			"type": "string"
+		}
+	]
+}
